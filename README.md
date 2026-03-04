@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+# Kilordle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Kilordle is an extreme Wordle variant where you solve **1000 Wordle puzzles at the same time**.
 
-## Available Scripts
+Each guess is applied to every puzzle simultaneously. Your goal is to solve all boards before running out of guesses.
 
-In the project directory, you can run:
+> Example: `Guesses: 2/1005 | Remaining: 999/1000`
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📸 Screenshot
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Kilordle Screenshot](./screenshot.jpeg)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🎮 How It Works
 
-### `npm run build`
+- Each board contains a hidden 5-letter word.
+- When you enter a guess, it is submitted to **all active boards**.
+- Every board evaluates the guess independently using standard Wordle rules:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Color | Meaning |
+|-------|----------|
+| 🟩 Green | Correct letter, correct position |
+| 🟨 Yellow | Correct letter, wrong position |
+| ⬜ Gray | Letter not in the word |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You win when all 1000 puzzles are solved.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🛠 Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- React
+- TypeScript
+- CSS
+- Seeded word generation
+- Custom utility logic for letter evaluation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📁 Project Structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+kilordle/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── Keyboard.tsx
+│   │   ├── Puzzle.tsx
+│   │   ├── Puzzles.tsx
+│   │   └── EndScreen.tsx
+│   │
+│   ├── util/
+│   │   ├── checkValidity.ts
+│   │   ├── generateWordlist.ts
+│   │   ├── isYellow.ts
+│   │   ├── seedRandom.ts
+│   │   ├── sortByValue.ts
+│   │   └── words.ts
+│   │
+│   ├── App.tsx
+│   └── index.tsx
+│
+├── prettier-plugin/
+└── package.json
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🚀 Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run development server
+
+```bash
+npm start
+```
+
+App runs locally at:
+
+```
+http://localhost:3000
+```
